@@ -1,13 +1,13 @@
 from unityagents import UnityEnvironment
-# from monitor import interact
-# from agent import Agent
+from monitor import interact
+from agent import Agent
 import argparse
 
 # Instantiate argument parser
 parser = argparse.ArgumentParser()
 
 # Add arguments (Interaction with the environment)
-parser.add_argument('--n_episodes', nargs='?', const=1, type=int, default=100)
+parser.add_argument('--n_episodes', nargs='?', const=1, type=int, default=2000)
 
 # Add arguments (Agent)
 parser.add_argument('--buffer_size', nargs='?', const=1, type=int, default=int(1e5))
@@ -30,8 +30,8 @@ if __name__ == '__main__':
 
     # Create environment
     # env = UnityEnvironment(file_name="Tennis_Linux_NoVis/Tennis.x86_64")
-    env = UnityEnvironment(file_name="unity/Tennis_Linux_NoVis/Tennis.x86_64")
-    # env = UnityEnvironment(file_name="/opt/project/unity/Reacher_Linux_NoVis/Reacher.x86_64")
+    # env = UnityEnvironment(file_name="unity/Tennis_Linux_NoVis/Tennis.x86_64")
+    env = UnityEnvironment(file_name="/opt/project/unity/Tennis_Linux_NoVis/Tennis.x86_64")
 
     # Get the default brain
     brain_name = env.brain_names[0]

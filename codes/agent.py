@@ -2,7 +2,7 @@ import random
 import numpy as np
 from collections import namedtuple, deque
 
-# from model import Actor, Critic
+from model import Actor, Critic
 
 import torch
 import torch.nn.functional as F
@@ -180,13 +180,13 @@ class Agent:
         # -------------------------- update critic -------------------------- #
         # Get predicted next-state and Q values from target model
         actions_next = self.actor_target(next_states)
-        q_targets_next = self.critic_target(next_states, actions_next)
+        q_targets_next = self.critic_target(next_states.view(-1, 48), actions_next.view(-1, 4))
 
         # Compute Q targets for current states
         q_targets = rewards + (self.gamma * q_targets_next * (1 - dones))
 
         # Get expected Q values from local model
-        q_expected = self.critic_local(states, actions)
+        q_expected = self.critic_local(states.view(-1, 48), actions.view(-1, 4))
 
         # Compute loss
         loss = F.mse_loss(q_expected, q_targets)
@@ -199,7 +199,7 @@ class Agent:
         # -------------------------- update actor -------------------------- #
         # Compute actor loss
         actions_pred = self.actor_local(states)
-        actor_loss = -self.critic_local(states, actions_pred).mean()
+        actor_loss = -self.critic_local(states.view(-1, 48), actions_pred.view(-1, 4)).mean()
 
         # Minimize the loss
         self.actor_optimizer.zero_grad()

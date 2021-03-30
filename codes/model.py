@@ -124,9 +124,6 @@ class Critic(nn.Module):
                 are more than one outputs.
         """
 
-        state = state.view(-1, 48)
-        action = action.view(-1, 4)
-
         # Define the hidden layers
         hidden = F.leaky_relu(self.fc1(state))
         hidden = torch.cat((hidden, action), dim=1)
