@@ -17,6 +17,7 @@ parser.add_argument('--tau', nargs='?', const=1, type=float, default=1e-3)
 parser.add_argument('--lr_actor', nargs='?', const=1, type=float, default=1e-5)
 parser.add_argument('--lr_critic', nargs='?', const=1, type=float, default=1e-4)
 parser.add_argument('--weight_decay', nargs='?', const=1, type=float, default=0)
+parser.add_argument('--update_every', nargs='?', const=1, type=int, default=2)
 
 # Parser parameters
 parser.add_argument("--mode", default='client')
@@ -52,6 +53,7 @@ if __name__ == '__main__':
         lr_actor=args.lr_actor,
         lr_critic=args.lr_critic,
         weight_decay=args.weight_decay,
+        update_every=args.update_every,
         seed=0
     )
 

@@ -25,6 +25,7 @@ class Agent:
                  lr_actor,
                  lr_critic,
                  weight_decay,
+                 update_every,
                  seed):
         """Initialize an Agent object.
 
@@ -39,6 +40,7 @@ class Agent:
             lr_actor: Float. Learning rate for actor local model
             lr_actor: Float. Learning rate for critic local model
             weight_decay: Float. L2 weight decay
+            update_every: Integer. How often to update the network
             seed: Integer. Random seed
         """
         # Environment parameters
@@ -63,6 +65,10 @@ class Agent:
         self.loss_fn = F.mse_loss
         self.tau = tau
         self.batch_size = batch_size
+        self.update_every = update_every
+
+        # Initialize time step (for updating every update_every steps)
+        self.t_step = 0
 
         # Update weights
         self.hard_update(self.actor_local, self.actor_target)
@@ -126,10 +132,14 @@ class Agent:
         # Save experience in replay memory
         self.memory.add(state, action, reward, next_state, done)
 
-        # If enough samples are available in memory, get random subset and learn
-        if len(self.memory) > self.batch_size:
-            experiences = self.memory.sample()
-            self.learn(experiences)
+        # Learn every update_every time steps.
+        self.t_step = (self.t_step + 1) % self.update_every
+        if self.t_step == 0:
+
+            # If enough samples are available in memory, get random subset and learn
+            if len(self.memory) > self.batch_size:
+                experiences = self.memory.sample()
+                self.learn(experiences)
 
     def act(self, state, add_noise=True):
         """Returns actions for given state as per current policy.
