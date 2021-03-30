@@ -49,7 +49,7 @@ def interact(env,
 
         print(f'\rEpisode {i_episode}\tAverage Score: {np.mean(scores_window):.2f}', end="")
 
-        if i_episode % 25 == 0:
+        if i_episode % 100 == 0:
             print(f'\rEpisode {i_episode}\tAverage Score: {np.mean(scores_window):.2f}')
 
         if np.mean(scores_window) >= 0.5 and solved_env == 0:
