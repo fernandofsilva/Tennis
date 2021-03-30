@@ -59,4 +59,8 @@ def interact(env,
             torch.save(agent.actor_local.state_dict(), save_model)
             solved_env += 1
 
+        if np.mean(scores_window) >= 1.0:
+            print('The average (over 100 episodes) of the scores is 1.0, the training was stopped')
+            break
+
     return scores
