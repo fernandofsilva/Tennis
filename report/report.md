@@ -43,7 +43,7 @@ The output layer has 2 nodes with tahn activation function (output between -1 an
 The results show the reward per episode, the dots represent the reward per episode, the straight red line represents the reward moving average with the windows of 100 rewards, 
 the dashed red line shows when the environment was solved (when the mean of the last 100 rewards are above 0.5).
 
-The environment was solved in the episode 831, in other words, the mean of rewards from the episode 731 to 831 ware above 0.5. 
+The environment was solved in the episode 831, in other words, the mean of rewards from the episode 731 to 831 ware above 0.5.
 
 ![](/images/scores.png)
 
