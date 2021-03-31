@@ -44,7 +44,7 @@ To train the agent with different parameters, you just need to access the notebo
 
 ## Scores
 
-Below, there are the scores during training of the neural network, the environment was solved in the episode 1669 (between the episode 1569 and 1669 the average return were above 30). 
+Below, there are the scores during training of the neural network, the environment was solved in the episode 1669 (between the episode 1569 and 1669 the average return were above 0.5). 
 
 ![](images/scores.png)
 
