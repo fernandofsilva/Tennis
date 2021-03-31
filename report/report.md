@@ -32,7 +32,7 @@ Below the table with the parameters used by the agent
 ### Neural network
 
 It was used a neural network with 3 hidden layers with 128 nodes each one, all hidden layers used leaky ReLu as activation function.
-The output layer has 2 nodes (according the action space 0, 1, 2 and 3) with tahn activation function (output between -1 and 1).
+The output layer has 2 nodes with tahn activation function (output between -1 and 1).
 
 
 ![](/images/nn.svg)
@@ -43,7 +43,7 @@ The output layer has 2 nodes (according the action space 0, 1, 2 and 3) with tah
 The results show the reward per episode, the dots represent the reward per episode, the straight red line represents the reward moving average with the windows of 100 rewards, 
 the dashed red line shows when the environment was solved (when the mean of the last 100 rewards are above 0.5).
 
-The environment was solved in the episode 1669, in other words, the mean of rewards from the episode 1599 to 1669 ware above 0.5. 
+The environment was solved in the episode 831, in other words, the mean of rewards from the episode 731 to 831 ware above 0.5. 
 
 ![](/images/scores.png)
 
